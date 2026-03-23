@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMS | Document Management System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Auth Section -->
+    <div id="auth-section" class="fade-in" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="glass-panel" style="width: 100%; max-width: 400px; padding: 2.5rem;">
+            <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
+                <i class="fas fa-folder-open"></i>
+                <span>DMS Portal</span>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form">
+                <h2 style="margin-bottom: 1.5rem; text-align: center;">Welcome back</h2>
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="login-username" class="form-control" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Sign In</button>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
+                    Don't have an account? <a href="#" id="show-register" style="color: var(--primary); text-decoration: none;">Create one</a>
+                </p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" style="display: none;">
+                <h2 style="margin-bottom: 1.5rem; text-align: center;">Create account</h2>
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="reg-username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="reg-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="reg-password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Register</button>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
+                    Already have an account? <a href="#" id="show-login" style="color: var(--primary); text-decoration: none;">Sign in</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Application -->
+    <div id="app-section" style="display: none;">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-folder-open"></i>
+                <span>DMS Pro</span>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-view="dashboard">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-view="documents">
+                        <i class="fas fa-file-alt"></i>
+                        <span>All Documents</span>
+                    </a>
+                </li>
+                <li id="nav-admin" class="nav-item" style="display: none;">
+                    <a href="#" class="nav-link" data-view="admin">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Admin Panel</span>
+                    </a>
+                </li>
+                <li id="nav-audit" class="nav-item" style="display: none;">
+                    <a href="#" class="nav-link" data-view="audit">
+                        <i class="fas fa-history"></i>
+                        <span>Audit Logs</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                <a href="#" id="logout-btn" class="nav-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header>
+                <h1 id="view-title">Dashboard</h1>
+                <div class="user-profile">
+                    <span id="user-role-badge" class="doc-status status-approved" style="position: static; margin-right: 0.5rem;">User</span>
+                    <span id="display-username">Username</span>
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                        <span id="user-initial">U</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard View -->
+            <div id="view-dashboard" class="view-content fade-in">
+                <div class="stats-grid">
+                    <div class="glass-card stat-card">
+                        <div style="color: var(--text-muted);">Total Documents</div>
+                        <div id="stat-total" class="stat-value">0</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div style="color: var(--text-muted);">Pending Review</div>
+                        <div id="stat-pending" class="stat-value" style="color: var(--accent);">0</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div style="color: var(--secondary);">Approved</div>
+                        <div id="stat-approved" class="stat-value">0</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h3>Recent Documents</h3>
+                    <button class="btn btn-primary" id="open-upload-modal">
+                        <i class="fas fa-plus"></i> Upload New
+                    </button>
+                </div>
+
+                <div id="recent-docs-container" class="document-grid">
+                    <!-- Cards injected by JS -->
+                </div>
+            </div>
+
+            <!-- Documents View -->
+            <div id="view-documents" class="view-content fade-in" style="display: none;">
+                <div class="glass-panel" style="padding: 1.5rem; margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
+                    <div style="flex-grow: 1; position: relative;">
+                        <i class="fas fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                        <input type="text" id="search-input" class="form-control" placeholder="Search documents..." style="padding-left: 3rem;">
+                    </div>
+                    <select id="filter-category" class="form-control" style="width: 200px;">
+                        <option value="">All Departments</option>
+                        <option value="1">HR</option>
+                        <option value="2">Finance</option>
+                        <option value="3">IT</option>
+                        <option value="4">Legal</option>
+                        <option value="5">General</option>
+                    </select>
+                </div>
+                <div id="all-docs-container" class="document-grid"></div>
+            </div>
+
+            <!-- Admin View -->
+            <div id="view-admin" class="view-content fade-in" style="display: none;">
+                <!-- Admin specific content -->
+                <h3>System Users</h3>
+                <div class="glass-panel" style="margin-top: 1rem; overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead style="background: rgba(255, 255, 255, 0.05);">
+                            <tr>
+                                <th style="padding: 1rem;">User</th>
+                                <th style="padding: 1rem;">Email</th>
+                                <th style="padding: 1rem;">Role</th>
+                                <th style="padding: 1rem;">Status</th>
+                                <th style="padding: 1rem;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Audit View -->
+            <div id="view-audit" class="view-content fade-in" style="display: none;">
+                <h3>Activity Logs</h3>
+                <div class="glass-panel" style="margin-top: 1rem; max-height: 600px; overflow-y: auto;">
+                    <div id="audit-log-container">
+                        <!-- Logs injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal-overlay">
+        <div class="glass-panel modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2>Upload Document</h2>
+                <button id="close-upload-modal" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.5rem;">&times;</button>
+            </div>
+            <form id="upload-form">
+                <div class="form-group">
+                    <label class="form-label">Document Title</label>
+                    <input type="text" id="doc-title" class="form-control" placeholder="Enter title" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea id="doc-desc" class="form-control" rows="3" placeholder="Brief description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Department / Category</label>
+                    <select id="doc-category" class="form-control">
+                        <option value="5">General</option>
+                        <option value="1">HR</option>
+                        <option value="2">Finance</option>
+                        <option value="3">IT</option>
+                        <option value="4">Legal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">File</label>
+                    <div id="drop-zone" style="border: 2px dashed var(--border-color); border-radius: 0.5rem; padding: 2rem; text-align: center; cursor: pointer; transition: var(--transition);">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <p id="file-name-display">Drop file here or click to browse</p>
+                        <input type="file" id="doc-file" style="display: none;" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Start Upload</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i id="toast-icon" class="fas fa-check-circle" style="color: var(--secondary);"></i>
+            <span id="toast-message">Operation successful!</span>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
