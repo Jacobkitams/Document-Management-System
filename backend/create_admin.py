@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from database import SessionLocal, engine
-import models, auth
+from .database import SessionLocal, engine
+from . import models, auth
 
 def create_superadmin(username, email, password):
     db = SessionLocal()
@@ -12,18 +12,19 @@ def create_superadmin(username, email, password):
         if existing_user:
             existing_user.hashed_password = hashed_password
             existing_user.role = models.UserRole.superadmin
-            print(f"Updated password for {username}.")
-        else:
-            new_user = models.User(
-                username=username,
-                email=email,
-                hashed_password=hashed_password,
-                role=models.UserRole.superadmin,
-                is_active=True
-            )
-            db.add(new_user)
-            print(f"Superadmin user '{username}' created successfully!")
+            existing_user.is_active = True
+            print(f"Updated password and activated {username}.")
+            db.commit()
+            return
         
+        new_user = models.User(
+            username=username,
+            email=email,
+            hashed_password=hashed_password,
+            role=models.UserRole.superadmin,
+            is_active=True
+        )
+        db.add(new_user)
         db.commit()
         db.refresh(new_user)
         print(f"Superadmin user '{username}' created successfully!")

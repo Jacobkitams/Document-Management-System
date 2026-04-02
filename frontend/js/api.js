@@ -67,7 +67,11 @@ const api = {
     },
 
     async getDocuments(params = {}) {
-        const query = new URLSearchParams(params).toString();
+        // Remove empty values to avoid 422 errors on backend (e.g., category_id="")
+        const filteredParams = Object.fromEntries(
+            Object.entries(params).filter(([_, v]) => v !== "" && v !== null && v !== undefined)
+        );
+        const query = new URLSearchParams(filteredParams).toString();
         return this.request(`/documents/?${query}`);
     },
 
@@ -97,6 +101,20 @@ const api = {
     async toggleUser(userId) {
         return this.request(`/users/${userId}/toggle`, {
             method: 'POST',
+        });
+    },
+
+    async updateUser(userId, data) {
+        return this.request(`/users/${userId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+    },
+
+    async deleteUser(userId) {
+        return this.request(`/users/${userId}`, {
+            method: 'DELETE',
         });
     },
 

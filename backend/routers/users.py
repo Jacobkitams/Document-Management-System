@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
-from database import get_db
-import models, schemas, auth
+from ..database import get_db
+from .. import models, schemas, auth
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -11,11 +11,11 @@ def get_me(current_user: models.User = Depends(auth.get_current_active_user)):
     return current_user
 
 @router.get("/", response_model=List[schemas.User])
-def list_users(db: Session = Depends(get_db), current_user: models.User = Depends(auth.check_superadmin_role)):
+def list_users(db: Session = Depends(get_db), current_user: models.User = Depends(auth.check_admin_role)):
     return db.query(models.User).all()
 
 @router.post("/{user_id}/toggle", response_model=schemas.User)
-def toggle_user(user_id: int, db: Session = Depends(get_db), current_user: models.User = Depends(auth.check_superadmin_role)):
+def toggle_user(user_id: int, db: Session = Depends(get_db), current_user: models.User = Depends(auth.check_admin_role)):
     db_user = db.query(models.User).filter(models.User.id == user_id).first()
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")

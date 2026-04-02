@@ -76,6 +76,8 @@ class Document(DocumentBase):
     file_type: str
     status: DocumentStatus
     uploaded_by: int
+    uploaded_by_name: Optional[str] = None
+    uploaded_by_avatar: Optional[str] = None
     approved_by: Optional[int] = None
     created_at: datetime
     updated_at: Optional[datetime] = None

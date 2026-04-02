@@ -5,8 +5,8 @@ import os
 import shutil
 from datetime import datetime
 from typing import Optional, List
-from database import get_db, settings
-import models, schemas, auth
+from ..database import get_db, settings
+from .. import models, schemas, auth
 
 router = APIRouter(prefix="/documents", tags=["documents"])
 
@@ -80,7 +80,13 @@ def list_documents(
     if search:
         query = query.filter(models.Document.title.ilike(f"%{search}%") | models.Document.description.ilike(f"%{search}%"))
         
-    return query.all()
+    docs = query.all()
+    # Populate uploader info
+    for doc in docs:
+        if doc.uploader:
+            doc.uploaded_by_name = doc.uploader.username
+            doc.uploaded_by_avatar = f"https://api.dicebear.com/7.x/initials/svg?seed={doc.uploader.username}"
+    return docs
 
 @router.get("/{doc_id}", response_model=schemas.Document)
 def get_document(doc_id: int, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_active_user)):

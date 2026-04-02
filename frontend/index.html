@@ -1,56 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMS | Document Management System</title>
+    <title>IUEA DMS | Premium User Area</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <!-- Auth Section -->
-    <div id="auth-section" class="fade-in" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
-        <div class="glass-panel" style="width: 100%; max-width: 400px; padding: 2.5rem;">
-            <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
-                <i class="fas fa-folder-open"></i>
-                <span>DMS Portal</span>
+    <div id="auth-section" class="fade-in"
+        style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="glass-panel" style="width: 100%; max-width: 450px; padding: 3rem; text-align: center;">
+            <div class="logo" style="margin-bottom: 3rem;">
+                <img src="https://iuea.ac.ug/sitepad-data/uploads/2020/11/Website-Logo.png" alt="IUEA Logo"
+                    style="max-width: 220px; height: auto; filter: none;">
+                <p style="color: var(--text-muted); margin-top: 1rem;">Secure Document Portal</p>
             </div>
-            
+
             <!-- Login Form -->
             <form id="login-form">
-                <h2 style="margin-bottom: 1.5rem; text-align: center;">Welcome back</h2>
+                <h2 style="margin-bottom: 2rem; text-align: center; font-size: 1.75rem;">DMS Login</h2>
                 <div class="form-group">
                     <label class="form-label">Username</label>
-                    <input type="text" id="login-username" class="form-control" placeholder="Enter your username" required>
+                    <input type="text" id="login-username" class="form-control" placeholder="Enter your username"
+                        required style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 1rem;">
                     <label class="form-label">Password</label>
-                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required
+                        style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Sign In</button>
-                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
-                    Don't have an account? <a href="#" id="show-register" style="color: var(--primary); text-decoration: none;">Create one</a>
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; justify-content: center; padding: 1.2rem; margin-top: 2rem;">
+                    <i class="fas fa-sign-in-alt"></i> Access Portal
+                </button>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                    Don't have an account? <a href="#" id="show-register"
+                        style="color: var(--primary); font-weight: 700; text-decoration: none;">Register</a>
                 </p>
             </form>
 
             <!-- Register Form -->
             <form id="register-form" style="display: none;">
-                <h2 style="margin-bottom: 1.5rem; text-align: center;">Create account</h2>
+                <h2 style="margin-bottom: 2rem; text-align: center; font-size: 1.75rem;">Create Account</h2>
                 <div class="form-group">
                     <label class="form-label">Username</label>
-                    <input type="text" id="reg-username" class="form-control" required>
+                    <input type="text" id="reg-username" class="form-control" placeholder="Choose a username" required
+                        style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 1rem;">
                     <label class="form-label">Email Address</label>
-                    <input type="email" id="reg-email" class="form-control" required>
+                    <input type="email" id="reg-email" class="form-control" placeholder="name@example.com" required
+                        style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 1rem;">
                     <label class="form-label">Password</label>
-                    <input type="password" id="reg-password" class="form-control" required>
+                    <input type="password" id="reg-password" class="form-control" placeholder="••••••••" required
+                        style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Register</button>
-                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
-                    Already have an account? <a href="#" id="show-login" style="color: var(--primary); text-decoration: none;">Sign in</a>
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; justify-content: center; padding: 1.2rem; margin-top: 2rem;">
+                    <i class="fas fa-user-plus"></i> Initialize Account
+                </button>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                    Already registered? <a href="#" id="show-login"
+                        style="color: var(--primary); font-weight: 700; text-decoration: none;">Sign In</a>
                 </p>
             </form>
         </div>
@@ -60,51 +81,67 @@
     <div id="app-section" style="display: none;">
         <nav class="sidebar">
             <div class="logo">
-                <i class="fas fa-folder-open"></i>
-                <span>DMS Pro</span>
+                <img src="https://iuea.ac.ug/sitepad-data/uploads/2020/11/Website-Logo.png" alt="IUEA Logo">
+                <p>Document Management System</p>
             </div>
             <ul class="nav-links">
                 <li class="nav-item">
                     <a href="#" class="nav-link active" data-view="dashboard">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link" data-view="documents">
-                        <i class="fas fa-file-alt"></i>
-                        <span>All Documents</span>
+                        <i class="fas fa-folder-open"></i>
+                        <span>My Library</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-view="upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Upload</span>
                     </a>
                 </li>
                 <li id="nav-admin" class="nav-item" style="display: none;">
                     <a href="#" class="nav-link" data-view="admin">
                         <i class="fas fa-shield-halved"></i>
-                        <span>Admin Panel</span>
+                        <span>Admin Console</span>
                     </a>
                 </li>
                 <li id="nav-audit" class="nav-item" style="display: none;">
                     <a href="#" class="nav-link" data-view="audit">
                         <i class="fas fa-history"></i>
-                        <span>Audit Logs</span>
+                        <span>Detailed Logs</span>
                     </a>
                 </li>
             </ul>
-            <div class="sidebar-footer" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color);">
-                <a href="#" id="logout-btn" class="nav-link">
-                    <i class="fas fa-sign-out-alt"></i>
+            <div class="sidebar-footer"
+                style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.15);">
+                <a href="#" id="logout-btn" class="nav-link" style="color: #ff9999;">
+                    <i class="fas fa-power-off"></i>
                     <span>Log Out</span>
                 </a>
             </div>
         </nav>
 
         <main class="main-content">
-            <header>
-                <h1 id="view-title">Dashboard</h1>
-                <div class="user-profile">
-                    <span id="user-role-badge" class="doc-status status-approved" style="position: static; margin-right: 0.5rem;">User</span>
-                    <span id="display-username">Username</span>
-                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 700;">
-                        <span id="user-initial">U</span>
+            <header class="header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button id="sidebar-toggle" class="btn"
+                        style="padding: 0.5rem; display: none; background: white; border: 1px solid #e2e8f0; border-radius: 10px;">
+                        <i class="fas fa-bars" style="color: var(--primary); font-size: 1.25rem;"></i>
+                    </button>
+                    <div>
+                        <h1 id="view-title" style="font-size: 1.8rem;">Dashboard</h1>
+                        <p id="current-date" style="color: var(--text-muted); font-size: 0.85rem;"></p>
+                    </div>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar" id="user-initial">U</div>
+                    <div style="text-align: right;">
+                        <h3 id="display-username" style="font-size: 1.1rem;">User</h3>
+                        <span id="user-role-badge" class="role-badge">Premium</span>
                     </div>
                 </div>
             </header>
@@ -112,25 +149,34 @@
             <!-- Dashboard View -->
             <div id="view-dashboard" class="view-content fade-in">
                 <div class="stats-grid">
-                    <div class="glass-card stat-card">
-                        <div style="color: var(--text-muted);">Total Documents</div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-file-invoice"></i></div>
                         <div id="stat-total" class="stat-value">0</div>
+                        <div class="stat-label">Total Documents</div>
                     </div>
-                    <div class="glass-card stat-card">
-                        <div style="color: var(--text-muted);">Pending Review</div>
-                        <div id="stat-pending" class="stat-value" style="color: var(--accent);">0</div>
+                    <div id="admin-only-stat" class="stat-card" style="display: none;">
+                        <div class="stat-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.05);"><i
+                                class="fas fa-users-gear"></i></div>
+                        <div id="stat-users" class="stat-value">0</div>
+                        <div class="stat-label">Active Users</div>
                     </div>
-                    <div class="glass-card stat-card">
-                        <div style="color: var(--secondary);">Approved</div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.05);"><i
+                                class="fas fa-shield-check"></i></div>
                         <div id="stat-approved" class="stat-value">0</div>
+                        <div class="stat-label">Certified Docs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="color: #f43f5e; background: rgba(244, 63, 94, 0.05);"><i
+                                class="fas fa-clock-pulse"></i></div>
+                        <div id="stat-pending" class="stat-value">0</div>
+                        <div class="stat-label">Pending Approval</div>
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                    <h3>Recent Documents</h3>
-                    <button class="btn btn-primary" id="open-upload-modal">
-                        <i class="fas fa-plus"></i> Upload New
-                    </button>
+                <div class="section-title">
+                    <i class="fas fa-bolt"></i>
+                    <span>Recent Activity</span>
                 </div>
 
                 <div id="recent-docs-container" class="document-grid">
@@ -138,52 +184,101 @@
                 </div>
             </div>
 
-            <!-- Documents View -->
+            <!-- Library View -->
             <div id="view-documents" class="view-content fade-in" style="display: none;">
-                <div class="glass-panel" style="padding: 1.5rem; margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;">
-                    <div style="flex-grow: 1; position: relative;">
-                        <i class="fas fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
-                        <input type="text" id="search-input" class="form-control" placeholder="Search documents..." style="padding-left: 3rem;">
+                <div class="glass-panel"
+                    style="margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; padding: 1.5rem;">
+                    <div style="flex: 1; min-width: 250px; position: relative; display: flex; align-items: center;">
+                        <i class="fas fa-search"
+                            style="position: absolute; left: 1.25rem; color: var(--primary); font-size: 1.1rem; z-index: 10;"></i>
+                        <input type="text" id="search-input" class="form-control"
+                            placeholder="Search in your library..."
+                            style="padding: 1rem 1rem 1rem 3.5rem; width: 100%; border-radius: 1.25rem; border: 1px solid #e2e8f0; font-size: 0.95rem;">
                     </div>
-                    <select id="filter-category" class="form-control" style="width: 200px;">
-                        <option value="">All Departments</option>
-                        <option value="1">HR</option>
-                        <option value="2">Finance</option>
-                        <option value="3">IT</option>
-                        <option value="4">Legal</option>
-                        <option value="5">General</option>
-                    </select>
+                    <div style="min-width: 200px;">
+                        <select id="filter-category" class="form-control"
+                            style="width: 100%; padding: 1rem; border-radius: 1.25rem; border: 1px solid #e2e8f0; font-weight: 600; color: #475569;">
+                            <option value="">📂 All Categories</option>
+                        </select>
+                    </div>
                 </div>
                 <div id="all-docs-container" class="document-grid"></div>
             </div>
 
+            <!-- Upload View -->
+            <div id="view-upload" class="view-content fade-in" style="display: none;">
+                <div class="glass-panel">
+                    <div class="section-title">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Upload Document</span>
+                    </div>
+                    <div class="upload-area" id="drop-zone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p style="font-weight: 500;">Click or drag and drop a file here</p>
+                        <p style="font-size: 0.8rem; margin-top: 0.5rem;">PDF, DOC, JPG, PNG up to 25MB</p>
+                        <input type="file" id="doc-file" style="display: none;">
+                    </div>
+                    <form id="upload-form">
+                        <div class="form-group">
+                            <label><i class="fas fa-tag"></i> Document Title</label>
+                            <input type="text" id="doc-title" placeholder="Ex: Annual Report 2024" required
+                                style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                        </div>
+                        <div class="form-group" style="margin-top: 1.5rem;">
+                            <label><i class="fas fa-folder"></i> Category</label>
+                            <select id="doc-category"
+                                style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                                <!-- Categories injected by JS -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="uploadBtn"
+                            style="width: 100%; padding: 1.2rem; margin-top: 2rem; justify-content: center;">
+                            <i class="fas fa-upload"></i> Publish Document
+                        </button>
+                    </form>
+                </div>
+            </div>
+
             <!-- Admin View -->
             <div id="view-admin" class="view-content fade-in" style="display: none;">
-                <!-- Admin specific content -->
-                <h3>System Users</h3>
-                <div class="glass-panel" style="margin-top: 1rem; overflow: hidden;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
-                        <thead style="background: rgba(255, 255, 255, 0.05);">
-                            <tr>
-                                <th style="padding: 1rem;">User</th>
-                                <th style="padding: 1rem;">Email</th>
-                                <th style="padding: 1rem;">Role</th>
-                                <th style="padding: 1rem;">Status</th>
-                                <th style="padding: 1rem;">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="user-table-body">
-                            <!-- Rows injected by JS -->
-                        </tbody>
-                    </table>
+                <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="chart-container" style="margin-bottom: 0;">
+                        <h2 class="section-title"><i class="fas fa-chart-pie"></i> Document Analytics</h2>
+                        <div style="height: 250px;">
+                            <canvas id="docChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel">
+                        <h2 class="section-title"><i class="fas fa-bolt"></i> Activity Stream</h2>
+                        <div id="admin-mini-logs" style="max-height: 250px; overflow-y: auto; font-size: 0.85rem;">
+                            <!-- Activity trail injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel" style="margin-top: 2rem;">
+                    <h2 class="section-title" style="margin-bottom: 2rem;"><i class="fas fa-file-shield"></i> Repository
+                        & Approvals</h2>
+                    <div id="admin-doc-list" class="document-grid">
+                        <!-- Documents injected by JS -->
+                    </div>
+                </div>
+
+                <div class="glass-panel" style="margin-top: 2rem;">
+                    <h2 class="section-title" style="margin-bottom: 2rem;"><i class="fas fa-users-cog"></i> User
+                        Management</h2>
+                    <div id="user-table-body">
+                        <!-- User rows injected by JS -->
+                    </div>
                 </div>
             </div>
 
             <!-- Audit View -->
             <div id="view-audit" class="view-content fade-in" style="display: none;">
-                <h3>Activity Logs</h3>
-                <div class="glass-panel" style="margin-top: 1rem; max-height: 600px; overflow-y: auto;">
-                    <div id="audit-log-container">
+                <div class="glass-panel">
+                    <h2 class="section-title"><i class="fas fa-list-check"></i> System Audit Trail</h2>
+                    <div id="audit-log-container" style="max-height: 70vh; overflow-y: auto; padding-right: 1rem;">
                         <!-- Logs injected by JS -->
                     </div>
                 </div>
@@ -191,55 +286,60 @@
         </main>
     </div>
 
-    <!-- Upload Modal -->
-    <div id="upload-modal" class="modal-overlay">
-        <div class="glass-panel modal-content">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                <h2>Upload Document</h2>
-                <button id="close-upload-modal" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.5rem;">&times;</button>
-            </div>
-            <form id="upload-form">
+    <!-- User Edit Modal -->
+    <div id="user-modal" class="modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 3000; align-items: center; justify-content: center;">
+        <div class="glass-panel" style="width: 100%; max-width: 500px; padding: 2.5rem;">
+            <h2 class="section-title"><i class="fas fa-user-edit"></i> Edit User</h2>
+            <form id="edit-user-form">
+                <input type="hidden" id="edit-user-id">
                 <div class="form-group">
-                    <label class="form-label">Document Title</label>
-                    <input type="text" id="doc-title" class="form-control" placeholder="Enter title" required>
+                    <label>Username</label>
+                    <input type="text" id="edit-username" class="form-control"
+                        style="width: 100%; padding: 0.8rem; border-radius: 0.75rem; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Description</label>
-                    <textarea id="doc-desc" class="form-control" rows="3" placeholder="Brief description"></textarea>
+                    <label>Email</label>
+                    <input type="email" id="edit-email" class="form-control"
+                        style="width: 100%; padding: 0.8rem; border-radius: 0.75rem; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Department / Category</label>
-                    <select id="doc-category" class="form-control">
-                        <option value="5">General</option>
-                        <option value="1">HR</option>
-                        <option value="2">Finance</option>
-                        <option value="3">IT</option>
-                        <option value="4">Legal</option>
+                    <label>Role</label>
+                    <select id="edit-role" class="form-control"
+                        style="width: 100%; padding: 0.8rem; border-radius: 0.75rem; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                        <option value="superadmin">Superadmin</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">File</label>
-                    <div id="drop-zone" style="border: 2px dashed var(--border-color); border-radius: 0.5rem; padding: 2rem; text-align: center; cursor: pointer; transition: var(--transition);">
-                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                        <p id="file-name-display">Drop file here or click to browse</p>
-                        <input type="file" id="doc-file" style="display: none;" required>
-                    </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1; padding: 1rem;">Save Changes</button>
+                    <button type="button" class="btn"
+                        style="flex: 1; padding: 1rem; background: #f1f5f9; color: #475569;"
+                        onclick="document.getElementById('user-modal').style.display='none'">Cancel</button>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Start Upload</button>
             </form>
         </div>
     </div>
 
     <!-- Toast Notification -->
     <div id="toast" class="toast">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <i id="toast-icon" class="fas fa-check-circle" style="color: var(--secondary);"></i>
-            <span id="toast-message">Operation successful!</span>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <i id="toast-icon" class="fas fa-check-circle" style="font-size: 1.5rem; color: var(--primary);"></i>
+            <div>
+                <strong id="toast-title" style="display: block; font-size: 0.95rem;">System Message</strong>
+                <span id="toast-message" style="font-size: 0.85rem; color: var(--text-muted);">Operation
+                    successful!</span>
+            </div>
         </div>
     </div>
 
     <script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
     <script src="js/dashboard.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    </script>
 </body>
+
 </html>
