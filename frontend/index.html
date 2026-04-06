@@ -15,65 +15,125 @@
 
 <body>
     <!-- Auth Section -->
-    <div id="auth-section" class="fade-in"
-        style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
-        <div class="glass-panel" style="width: 100%; max-width: 450px; padding: 3rem; text-align: center;">
-            <div class="logo" style="margin-bottom: 3rem;">
-                <img src="https://iuea.ac.ug/sitepad-data/uploads/2020/11/Website-Logo.png" alt="IUEA Logo"
-                    style="max-width: 220px; height: auto; filter: none;">
-                <p style="color: var(--text-muted); margin-top: 1rem;">Secure Document Portal</p>
+    <div id="auth-section" class="fade-in">
+        <div class="split-container">
+            <!-- Left Side: Branding & Visuals -->
+            <div class="auth-visual">
+                <div class="visual-overlay"></div>
+                <div class="visual-content">
+                    <img src="whitelogo.png" alt="IUEA Logo" class="floating"
+                        style="max-width: 250px; margin-bottom: 2rem;">
+                    <h1 style="font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;">Secure
+                        <br>Document <br>Management</h1>
+                    <p style="font-size: 1.1rem; opacity: 0.9; max-width: 400px; line-height: 1.6;">Access the
+                        International University of East Africa's premium portal for secure document storage and
+                        administrative control.</p>
+                </div>
+                <div class="visual-footer">
+                    <span>© 2024 IUEA DMS • Enterprise Edition</span>
+                </div>
             </div>
 
-            <!-- Login Form -->
-            <form id="login-form">
-                <h2 style="margin-bottom: 2rem; text-align: center; font-size: 1.75rem;">DMS Login</h2>
-                <div class="form-group">
-                    <label class="form-label">Username</label>
-                    <input type="text" id="login-username" class="form-control" placeholder="Enter your username"
-                        required style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                </div>
-                <div class="form-group" style="margin-top: 1rem;">
-                    <label class="form-label">Password</label>
-                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required
-                        style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                </div>
-                <button type="submit" class="btn btn-primary"
-                    style="width: 100%; justify-content: center; padding: 1.2rem; margin-top: 2rem;">
-                    <i class="fas fa-sign-in-alt"></i> Access Portal
-                </button>
-                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
-                    Don't have an account? <a href="#" id="show-register"
-                        style="color: var(--primary); font-weight: 700; text-decoration: none;">Register</a>
-                </p>
-            </form>
+            <!-- Right Side: Forms -->
+            <div class="auth-forms">
+                <div class="form-wrapper">
+                    <div class="mobile-logo">
+                        <img src="iuea-logo.png" alt="IUEA Logo" style="max-width: 150px; margin-bottom: 2rem;">
+                    </div>
 
-            <!-- Register Form -->
-            <form id="register-form" style="display: none;">
-                <h2 style="margin-bottom: 2rem; text-align: center; font-size: 1.75rem;">Create Account</h2>
-                <div class="form-group">
-                    <label class="form-label">Username</label>
-                    <input type="text" id="reg-username" class="form-control" placeholder="Choose a username" required
-                        style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                    <!-- Login Form -->
+                    <form id="login-form">
+                        <div class="form-header">
+                            <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-main);">Welcome Back</h2>
+                            <p style="color: var(--text-muted); margin-top: 0.5rem;">Enter your credentials to access
+                                your library</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Username</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="login-username" class="form-control"
+                                    placeholder="Enter your username" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1.5rem;">
+                            <label class="form-label">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="login-password" class="form-control" placeholder="••••••••"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; font-size: 0.85rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" style="width: 16px; height: 16px; accent-color: var(--primary);">
+                                Remember me
+                            </label>
+                            <a href="#" style="color: var(--primary); font-weight: 600; text-decoration: none;">Forgot
+                                Password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary login-btn">
+                            <span>Access Portal</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+
+                        <p class="auth-switch">
+                            Don't have an account? <a href="#" id="show-register">Create Account</a>
+                        </p>
+                    </form>
+
+                    <!-- Register Form -->
+                    <form id="register-form" style="display: none;">
+                        <div class="form-header">
+                            <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-main);">Initialize Account
+                            </h2>
+                            <p style="color: var(--text-muted); margin-top: 0.5rem;">Complete the form to start secure
+                                management</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Username</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user-plus"></i>
+                                <input type="text" id="reg-username" class="form-control"
+                                    placeholder="Choose a username" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1.25rem;">
+                            <label class="form-label">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="reg-email" class="form-control" placeholder="name@example.com"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1.25rem;">
+                            <label class="form-label">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-key"></i>
+                                <input type="password" id="reg-password" class="form-control" placeholder="••••••••"
+                                    required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary login-btn">
+                            <span>Register Account</span>
+                            <i class="fas fa-user-plus"></i>
+                        </button>
+
+                        <p class="auth-switch">
+                            Already registered? <a href="#" id="show-login">Sign In</a>
+                        </p>
+                    </form>
                 </div>
-                <div class="form-group" style="margin-top: 1rem;">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" id="reg-email" class="form-control" placeholder="name@example.com" required
-                        style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                </div>
-                <div class="form-group" style="margin-top: 1rem;">
-                    <label class="form-label">Password</label>
-                    <input type="password" id="reg-password" class="form-control" placeholder="••••••••" required
-                        style="width: 100%; padding: 1rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                </div>
-                <button type="submit" class="btn btn-primary"
-                    style="width: 100%; justify-content: center; padding: 1.2rem; margin-top: 2rem;">
-                    <i class="fas fa-user-plus"></i> Initialize Account
-                </button>
-                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
-                    Already registered? <a href="#" id="show-login"
-                        style="color: var(--primary); font-weight: 700; text-decoration: none;">Sign In</a>
-                </p>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -81,7 +141,7 @@
     <div id="app-section" style="display: none;">
         <nav class="sidebar">
             <div class="logo">
-                <img src="https://iuea.ac.ug/sitepad-data/uploads/2020/11/Website-Logo.png" alt="IUEA Logo">
+                <img src="whitelogo.png" alt="IUEA Logo">
                 <p>Document Management System</p>
             </div>
             <ul class="nav-links">

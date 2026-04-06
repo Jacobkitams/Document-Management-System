@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from database import SessionLocal, engine
-import models, auth
+from .database import SessionLocal, engine
+from . import models, auth
 
 def create_user(username, email, password, role):
     db = SessionLocal()

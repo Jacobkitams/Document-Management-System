@@ -87,7 +87,7 @@ body {
 .logo img {
     max-width: 180px;
     height: auto;
-    filter: brightness(0) invert(1);
+    /* filter: brightness(0) invert(1); */
     margin-bottom: 0.5rem;
 }
 
@@ -525,4 +525,143 @@ body {
     padding: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     margin-bottom: 2rem;
+}
+/* Split Layout Professional Login */
+.split-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background: white;
+}
+
+.auth-visual {
+    flex: 1.2;
+    position: relative;
+    background: url('../assets/login_bg.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem;
+    color: white;
+    overflow: hidden;
+}
+
+.visual-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.9) 0%, rgba(26, 26, 46, 0.8) 100%);
+    z-index: 1;
+}
+
+.visual-content {
+    position: relative;
+    z-index: 2;
+}
+
+.visual-footer {
+    position: absolute;
+    bottom: 3rem;
+    left: 5rem;
+    z-index: 2;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.auth-forms {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background: #f8fafc;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 450px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.mobile-logo {
+    display: none;
+    text-align: center;
+}
+
+.form-header {
+    margin-bottom: 2.5rem;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 1.25rem;
+    color: var(--primary);
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+.input-with-icon .form-control {
+    padding: 1.2rem 1rem 1.2rem 3.5rem !important;
+    font-size: 1rem;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px !important;
+    transition: var(--transition);
+}
+
+.input-with-icon .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(139, 0, 0, 0.1);
+    outline: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 1.25rem !important;
+    margin-top: 2.5rem;
+    border-radius: 16px !important;
+    font-size: 1.1rem !important;
+    justify-content: space-between !important;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.auth-switch a {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .auth-visual {
+        display: none;
+    }
+    
+    .mobile-logo {
+        display: block;
+    }
+    
+    .auth-forms {
+        background: white;
+    }
 }
